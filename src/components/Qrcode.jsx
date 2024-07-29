@@ -19,6 +19,16 @@ const Qrcode = () => {
       setload(false);
     }
   }
+  function downloadQR(){
+    fetch(img).then((Response)=>Response.blob()).then((blob)=>{
+      const link=document.createElement("a");
+      link.href=URL.createObjectURL(blob);
+      link.download="QRcode.png";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
   return (
     <div className="container">
        {load && <p>Please wait...</p>}
@@ -30,8 +40,8 @@ const Qrcode = () => {
       <input type="text" id="qrsize" className="input-field" onChange={(e)=>setqrsize(e.target.value)} placeholder="Enter the size of Qrcode"/>
       </div>
       <div className="buttons">
-      <button onClick={generateQR} disabled={load}>Generate Qrcode</button>
-      <button>Download Qrcode</button>
+      <button className="generate-button" onClick={generateQR} disabled={load} >Generate Qrcode</button>
+      <button className="download-button" onClick={downloadQR} >Download Qrcode</button>
       </div>
     </div>
   )

@@ -42,10 +42,16 @@ label,p {
     gap: 35px;
     padding-top: 10px;
 }
+.generate-button:disabled{
+    background-color: rgb(200, 200, 200);
+    cursor: not-allowed;
+}
 button{
     padding: 5px 10px;
     background-color: #005D54;
     color: white;
+    border: none;
+    border-radius: 2px;
 }
 button:hover{
     background-color: #98FF98;
@@ -53,4 +59,5 @@ button:hover{
     border: 1px solid #005D54;
     cursor: pointer;
     transition: 0.7s;
+    border: none;
 }
